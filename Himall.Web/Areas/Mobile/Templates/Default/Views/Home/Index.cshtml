@@ -1,56 +1,220 @@
 ﻿@{
-    ViewBag.Title = ViewBag.SiteName + "首页";
-    ViewBag.FootIndex = 0;
-    ViewBag.LeftNavi = false;
+    ViewBag.Title = "雪域花水湾-欢迎您";
+    Layout = "~/Areas/Mobile/Templates/Default/Views/Shared/_Base.cshtml";
 }
-@using Himall.Web.Areas.Mobile.Models;
-
-    <div class="container">
-        @{Html.RenderPartial("~/Areas/Mobile/Templates/Default/Views/Shared/_SearchBox.cshtml");}
-        <!--轮播图 -->
-        <div id="slides">
-            @{var slideAds = (IEnumerable<HomeSlideAdsModel>)ViewBag.SlideAds;}
-            @foreach (var slideAd in slideAds)
-            {
-                  <a href="@slideAd.Url"><img src="@slideAd.ImageUrl" alt=""></a>
-            }
-        </div>
-        <div class="index-title"><img src="~/Areas/Mobile/Templates/Default/Images/index-title-1.png" /></div>
-
-
-        @{var topics = (IEnumerable<HomeTopicModel>)ViewBag.Topics;}
-        <ul class="recom-topic clearfix">
-            @foreach (var topic in topics)
-            {
-            <li>
-                <a href="/@ViewBag.AreaName/topic/detail/@topic.Id?isMobileHomeTopic=true"><img class="lazyload" src="~/Areas/Mobile/Templates/Default/images/blank.gif" data-url="@topic.ImageUrl" alt=""></a>
-                <p>
-                    @foreach (var tag in topic.Tags)
-                    {
-                         <span>@tag</span>
-                    }
+<!--顶部标题区域-->
+<div class="row">
+    <nav class="nav navbar-default">
+        <div class="container-fluid" style="background-color:#ffffff; background-image: url('../Images/hsw_logo.png');background-repeat:no-repeat;background-size:cover">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand" style="padding:0">
+                    @*<img src="~/Images/hswlogo.png" alt="logo 48*48" style="height:60px" />*@
+                </a>
+                <p class="navbar-text text-right" style="padding-right:15px">
+                    <!--<a href="/Login/BindUser?openId=&serviceProvider=&AppidType=&headimgurl=&unionid=&returnUrl=http%3a%2f%2fwww.xyhswsc.com%2fm-Wap%2fMember%2fCenter" class="btn btn-default btn-sm"><strong>登录</strong></a>-->
+                    <!--<a href="/Register?openId=&serviceProvider=&AppidType=&headimgurl=&unionid=&returnUrl=http%3a%2f%2fwww.xyhswsc.com%2fm-Wap%2fMember%2fCenter" class="btn btn-danger btn-sm"><strong>注册</strong></a>-->
                 </p>
-            </li>
-            }
-        </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 
-        @{var products = (IEnumerable<Himall.Web.Areas.Mobile.Models.ProductItem>)ViewBag.Products; }
-        <div class="index-title"><img src="~/Areas/Mobile/Templates/Default/Images/index-title-2.png" /></div>
-        <ul class="goods-list clearfix" id="productList">
+<!--轮播广告区域-->
+<div class="row">
+    <div class="carousel slide" id="topbanner" style="height:160px;">
+        <ol class="carousel-indicators">
+            <li data-target="topbanner" data-slide-to="0" class="active"></li>
+            <li data-target="topbanner" data-slide-to="1"></li>
+            <li data-target="topbanner" data-slide-to="2"></li>
+        </ol>
 
-            @foreach(var product in products)
-            {
-            <li>
-                <a class="p-img" href="/@ViewBag.AreaName/product/detail/@product.Id"><img class="lazyload" src="~/Areas/Mobile/Templates/Default/images/blank.gif" data-url="@product.ImageUrl" alt="@product.Name"></a>
-                <i>@(((product.SalePrice/product.MarketPrice)*10).ToString("F1"))折</i>
-                <h3><a>@product.Name</a></h3>
-                <p><span>￥@product.SalePrice.ToString("F2")</span><s>￥@product.MarketPrice.ToString("F2")</s></p>
-            </li>
-            }
+        <div class="carousel-inner">
+            <div class="item active">
+                <a href="/product/detail/257">
+                    <img src="~/Images/goods01.png" alt="图1" style="height:160px;" />
+                </a>
+                <div class="carousel-caption"></div>
+            </div>
+            <div class="item">
+                <a href="http://cms.xyhswsc.com/index.php/detail/107.html">
+                    <img src="~/Images/goods02.png" alt="图2" style="height:160px;" />
+                </a>
+                <div class="carousel-caption"></div>
+            </div>
+            <div class="item">
+                <a href="http://cms.xyhswsc.com/index.php/detail/108.html">
+                    <img src="~/Images/goods03.png" alt="图3" style="height:160px;" />
+                </a>
+                <div class="carousel-caption"></div>
+            </div>
+        </div>
 
-        </ul>
-        <div class="loading" id="autoLoad"><span></span></div>
-     @{Html.RenderPartial("~/Areas/Mobile/Templates/Default/Views/Shared/_4ButtonsFoot.cshtml");}
+        <!-- Controls -->
+        <a class="left carousel-control" href="#topbanner" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#topbanner" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-<a class="WX-backtop"></a>
-<script src="~/Areas/Mobile/Templates/Default/Scripts/home.js"></script>
+</div>
+<!--Banner区域-->
+
+
+<!--图标导航快捷区-->
+<div class="row" style="padding-top:8px; background-color:#ffffff">
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="http://www.xyhswsc.com/m-wap/search?cid=1">
+            <div><img src="~/Images/hsw-web.fw_03.gif" alt="" style="width:64px;height:64px" /></div>
+            <span>特色产品</span>
+        </a>
+    </div>
+	<div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="http://www.xyhswsc.com/m-wap/search?cid=6">
+            <div><img src="~/Images/hsw-web.fw_03-16.gif" alt="" style="width:64px;height:64px" /></div>
+            <span>本地服务</span>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="http://www.xyhswsc.com/m-wap/search?cid=13">
+            <div><img src="~/Images/hsw-web.fw_03-14.gif" alt="" style="width:64px;height:64px" /></div>
+            <span>旅游酒店</span>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="http://www.xyhswsc.com/m-wap/search?cid=22">
+            <div><img src="~/Images/hsw-web.fw_03-18.gif" alt="" style="width:64px;height:64px" /></div>
+            <span>吃喝玩乐</span>
+        </a>
+    </div>
+</div>
+
+<!--第二栏广告-->
+<div class="row" style="margin-top:8px;">
+    @*<div class="col-xs-3" style="margin:0;padding:0">
+        <img src="~/Images/hsw-web_24.gif" style="width:100%" />
+    </div>
+    <div class="col-xs-3" style="margin:0;padding:0">
+        <img src="~/Images/hsw-web_25.gif" style="width:100%" />
+    </div>
+    <div class="col-xs-3" style="margin:0;padding:0">
+        <img src="~/Images/hsw-web_26.gif" style="width:100%" />
+    </div>
+    <div class="col-xs-3" style="margin:0;padding:0">
+        <img src="~/Images/hsw-web_27.gif" style="width:100%" />
+    </div>*@
+    <div class="col-xs-12" style="margin:0;padding:0">
+        <img src="~/Images/baner01.png" style="width:100%" />
+    </div>
+</div>
+@*<div class="row">
+    <div class="col-xs-3" style="margin:0;padding:0">
+        <img src="~/Images/hsw-web_28.gif" style="width:100%" />
+    </div>
+    <div class="col-xs-3" style="margin:0;padding:0">
+        <img src="~/Images/hsw-web_29.gif" style="width:100%" />
+    </div>
+    <div class="col-xs-3" style="margin:0;padding:0">
+        <img src="~/Images/hsw-web_30.gif" style="width:100%" />
+    </div>
+    <div class="col-xs-3" style="margin:0;padding:0">
+        <img src="~/Images/hsw-web_31.gif" style="width:100%" />
+    </div>
+</div>*@
+
+<!--快捷功能引导区-->
+<div class="row" style="margin-top:8px;background-color:#ffffff">
+    <div class="col-xs-12 text-center">
+        <img src="~/Images/hsw-web_56.gif" style="height:30px;" />
+    </div>
+</div>
+<div class="row" style="background-color:#ffffff">
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="">
+            <div style="height:81px"><img src="~/Images/hsw-web_59.gif" alt="" style="width:64px;" /></div>
+            <span>春赏花</span>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="">
+            <div style="height:81px"><img src="~/Images/hsw-web_61.gif" alt="" style="width:64px;" /></div>
+            <span>夏乘凉</span>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="">
+            <div style="height:81px"><img src="~/Images/hsw-web_63.gif" alt="" style="width:64px;" /></div>
+            <span>秋观叶</span>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="">
+            <div style="height:81px"><img src="~/Images/hsw-web_65.gif" alt="" style="width:64px;" /></div>
+            <span>冬玩雪</span>
+        </a>
+    </div>
+</div>
+
+<div class="row" style="margin-top:8px;background-color:#ffffff">
+    <div class="col-xs-12 text-center">
+        <img src="~/Images/hsw-web_71.gif" style="height:30px;" />
+    </div>
+</div>
+<div class="row" style="background-color:#ffffff">
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="">
+            <div style="height:69px"><img src="~/Images/hsw-web_76.gif" alt="" style="width:64px;" /></div>
+            <span>国内专线</span>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="">
+            <div style="height:69px"><img src="~/Images/hsw-web_78.gif" alt="" style="width:64px;" /></div>
+            <span>省内直达</span>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="">
+            <div style="height:69px"><img src="~/Images/hsw-web_74.gif" alt="" style="width:64px" /></div>
+            <span>品质攻略</span>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="">
+            <div style="height:69px"><img src="~/Images/hsw-web_81.gif" alt="" style="width:64px;" /></div>
+            <span>轻松短期</span>
+        </a>
+    </div>
+</div>
+
+<div class="row" style="margin-top:8px;background-color:#ffffff">
+    <div class="col-xs-12 text-center">
+        <img src="~/Images/hsw-web_87.gif" style="height:25px;" />
+    </div>
+</div>
+<div class="row" style="background-color:#ffffff">
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="#">
+            <div><img src="~/Images/hsw-web_89.gif" alt="" style="width:64px;" /></div>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="#">
+            <div><img src="~/Images/hsw-web_91.gif" alt="" style="width:64px;" /></div>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="#">
+            <div><img src="~/Images/hsw-web_93.gif" alt="" style="width:64px" /></div>
+        </a>
+    </div>
+    <div class="col-xs-3 text-center" style="margin:0;padding:0">
+        <a href="#">
+            <div><img src="~/Images/hsw-web_95.gif" alt="" style="width:64px;" /></div>
+        </a>
+    </div>
+</div>
+
+@{Html.RenderPartial("~/Areas/Mobile/Templates/Default/Views/Shared/_4ButtonsFoot.cshtml");}

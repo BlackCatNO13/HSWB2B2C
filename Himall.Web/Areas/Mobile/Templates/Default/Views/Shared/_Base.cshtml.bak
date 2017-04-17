@@ -9,14 +9,14 @@
     <link href="~/Areas/Mobile/Templates/Default/Content/custom.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
     <script src="~/Scripts/CommonJS.js"></script>
-    <script src="~/Areas/Mobile/Templates/Default/Scripts/custom.js"></script>
+    <script src="~/Areas/Mobile/Templates/Default/Scripts/custom.js"></script>	
 </head>
 <body>
     <script>
         var areaName = '@ViewBag.AreaName';
         var MAppType = '@ViewBag.MAppType';
     </script>
-    @RenderBody()
+    @RenderBody()	
     @if (ViewBag.LeftNavi == null || (bool)ViewBag.LeftNavi)
     {
         <div class="wx_aside">
@@ -36,7 +36,7 @@
                 else
                 {
                     <div class="wx_aside_item" style="top:-140px;">
-                        <a href="/@ViewBag.AreaName/Vshop/detail/@ViewBag.MVshopId" class="home">店铺首页</a>						
+                        <a href="/@ViewBag.AreaName/Vshop/detail/@ViewBag.MVshopId" class="home">店铺首页</a>
                         <a href="/@ViewBag.AreaName/Cart/Cart" class="f-cart">购物车</a>
                         <a href="/@ViewBag.AreaName/Member/Center" class="user">个人中心</a>
                     </div>

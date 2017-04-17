@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    
+	
+	<link href="~/Areas/Mobile/Templates/Default/Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/Areas/Mobile/Templates/Default/Content/bootstrap-theme.min.css" rel="stylesheet" />
+	
+    
+</head>
+ <body class="container-fluid" style="background-color:#eeeeee">
+    @RenderBody()    
+	
+	<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+	<script src="~/Areas/Mobile/Templates/Default/Scripts/bootstrap.js"></script>
+    <script type="text/javascript">
+        $('#topbanner').carousel();
+    </script>
+
+    
+</body>
+</html>
