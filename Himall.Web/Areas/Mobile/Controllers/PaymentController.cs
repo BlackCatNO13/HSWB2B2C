@@ -84,8 +84,22 @@ namespace Himall.Web.Areas.Mobile.Controllers
 			var collection = plugins.ToArray<Plugin<IPaymentPlugin>>().Select((Plugin<IPaymentPlugin> item) => {
 				string empty = string.Empty;
 				try
-				{
-					empty = item.Biz.GetRequestUrl(str4, string.Concat(str3, item.PluginInfo.PluginId.Replace(".", "-")), str5, num, productNameDescriptionFromOrders, cookie);
+				{/*
+                    Log.Info("str4: " + str4);
+
+                    Log.Info("str3: " + str3);
+
+                    Log.Info("item.PluginInfo.PluginId.Replace: " + item.PluginInfo.PluginId.Replace(".", "-"));
+
+                    Log.Info("str5: " +  str5);
+
+                    Log.Info("num：" + num);
+
+                    Log.Info("productNameDescriptionFromOrders; " + productNameDescriptionFromOrders);
+
+                    Log.Info("cookie: " + cookie);
+                    */
+                    empty = item.Biz.GetRequestUrl(str4, string.Concat(str3, item.PluginInfo.PluginId.Replace(".", "-")), str5, num, productNameDescriptionFromOrders, cookie);
 				}
 				catch (Exception exception)
 				{
@@ -93,10 +107,20 @@ namespace Himall.Web.Areas.Mobile.Controllers
 				}
 				return new { id = item.PluginInfo.PluginId, name = item.PluginInfo.DisplayName, logo = item.Biz.Logo, url = empty };
 			});
-			collection = 
+            //Log.Info(plugins.ToArray<Plugin<IPaymentPlugin>>());
+            //foreach(var item in collection)
+            //{
+            //    Log.Info("www: " + item.url + "|id:" + item.name);
+            //}
+            /*
+            Log.Info(collection);
+            collection = 
 				from item in collection
 				where !string.IsNullOrWhiteSpace(item.url)
 				select item;
+                */
+            //Log.Info(collection);
+            
 			return Json(collection);
 		}
 

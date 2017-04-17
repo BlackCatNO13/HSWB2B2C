@@ -733,8 +733,9 @@ namespace Himall.Service
 					{
 						webClient.DownloadFile(image, IOHelper.GetMapPath(str1));
 					}
-					catch
+					catch( Exception e ) 
 					{
+                        throw e;
 						empty = null;
 					}
 					image = str1;

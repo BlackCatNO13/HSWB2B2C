@@ -31,6 +31,8 @@ namespace Himall.Web.Areas.Mobile.Controllers
 				throw new HimallException("用户名和密码不匹配");
 			}
 			headimgurl = HttpUtility.UrlDecode(headimgurl);
+            
+            
 			memberService.BindMember(userMemberInfo.Id, serviceProvider, openId, appidtype, headimgurl, unionid);
 			string str = UserCookieEncryptHelper.Encrypt(userMemberInfo.Id, "Mobile");
 			WebHelper.SetCookie("Himall-User", str);

@@ -438,7 +438,7 @@ namespace Himall.Core.Helper
 
 		public static void TranserImageFormat(string originalImagePath, string newFormatImagePath, ImageFormat fortmat)
 		{
-			(new Bitmap(originalImagePath)).Save(newFormatImagePath, ImageFormat.Jpeg);
+            (new Bitmap(originalImagePath)).Save(newFormatImagePath, ImageFormat.Jpeg);
 		}
 	}
 }

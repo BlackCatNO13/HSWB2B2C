@@ -81,9 +81,20 @@ namespace Himall.Web.Areas.Mobile.Controllers
             str = base.Request["nonce"];
             item1 = base.Request["timestamp"];
             str1 = base.Request["echostr"];
+
             ActionResult user = base.Content("");
+            Log.Info("signature" + item);
+
+            Log.Info("nonce" + str);
+
+            Log.Info("timestamp" + item1);
+
+            Log.Info("echostr" + str1);
+
+
             if (base.Request.HttpMethod != "GET")
             {
+                Log.Info("不是GET");
                 if (!Senparc.Weixin.MP.CheckSignature.Check(item, item1, str, weixinToken))
                 {
                     Log.Info("验证不通过");
@@ -205,8 +216,9 @@ namespace Himall.Web.Areas.Mobile.Controllers
             }
             else if (Senparc.Weixin.MP.CheckSignature.Check(item, item1, str, weixinToken))
             {
+                Log.Info("验证通过");
                 user = base.Content(str1);
-                Log.Error(user);
+                //Log.Error(user);
             }
             return user;
         }

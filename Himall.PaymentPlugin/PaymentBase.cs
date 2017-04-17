@@ -33,7 +33,7 @@ namespace Himall.PaymentPlugin
 			{
 				string item;
 				string fullName = GetType().FullName;
-				Log.Info(string.Concat("get WorkDirectory:", fullName));
+				//Log.Info(string.Concat("get WorkDirectory:", fullName));
 				if ((string.IsNullOrWhiteSpace(fullName) ? true : !PaymentBase<T>.workDirectories.ContainsKey(fullName)))
 				{
 					item = null;
