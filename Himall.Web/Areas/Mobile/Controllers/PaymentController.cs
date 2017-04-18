@@ -107,19 +107,14 @@ namespace Himall.Web.Areas.Mobile.Controllers
 				}
 				return new { id = item.PluginInfo.PluginId, name = item.PluginInfo.DisplayName, logo = item.Biz.Logo, url = empty };
 			});
-            //Log.Info(plugins.ToArray<Plugin<IPaymentPlugin>>());
-            //foreach(var item in collection)
-            //{
-            //    Log.Info("www: " + item.url + "|id:" + item.name);
-            //}
-            /*
+            
             Log.Info(collection);
             collection = 
 				from item in collection
 				where !string.IsNullOrWhiteSpace(item.url)
 				select item;
-                */
-            //Log.Info(collection);
+                
+            
             
 			return Json(collection);
 		}

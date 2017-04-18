@@ -79,8 +79,9 @@ namespace Himall.Plugin.Payment.WeiXinPay
 			requestHandler1.SetParameter("package", string.Format("prepay_id={0}", value));
 			requestHandler1.SetParameter("signType", "MD5");
 			str = requestHandler1.CreateMd5Sign("key", config.Key);
-			string str4 = string.Concat("WeixinJSBridge.invoke('getBrandWCPayRequest', {{'appId': '{0}','timeStamp': '{1}','nonceStr': '{2}','package': '{3}','signType': 'MD5','paySign': '{4}'}}, function (res) {{if (res.err_msg == 'brand_wcpay_request:ok') {{location.href='", returnUrl, "'}}else alert('支付失败！')}});");
-			object[] appId = new object[] { config.AppId, timestamp, noncestr, string.Format("prepay_id={0}", value), str };
+            //string str4 = string.Concat("WeixinJSBridge.invoke('getBrandWCPayRequest', {{'appId': '{0}','timeStamp': '{1}','nonceStr': '{2}','package': '{3}','signType': 'MD5','paySign': '{4}'}}, function (res) {{if (res.err_msg == 'brand_wcpay_request:ok') {{location.href='", returnUrl, "'}}else alert('支付失败！')}});");
+            string str4 = string.Concat("WeixinJSBridge.invoke('getBrandWCPayRequest', {{'appId': '{0}','timeStamp': '{1}','nonceStr': '{2}','package': '{3}','signType': 'MD5','paySign': '{4}'}}, function (res) {{if (res.err_msg == 'brand_wcpay_request:ok') {{location.href='", returnUrl, "'}}                   }});");
+            object[] appId = new object[] { config.AppId, timestamp, noncestr, string.Format("prepay_id={0}", value), str };
 			string str5 = string.Format(str4, appId);
 
 
