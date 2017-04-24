@@ -28,7 +28,7 @@ namespace Himall.Web.Areas.Admin.Controllers
 		{
 			ShopInfo shop = ServiceHelper.Create<IShopService>().GetShop(id, true);
 			ViewBag.ShopId = id;
-			ViewBag.Status = shop.ShopStatus;
+			ViewBag.Status = (int)shop.ShopStatus;
 			ShopModel shopModel = new ShopModel(shop)
 			{
 				BusinessCategory = new List<CategoryKeyVal>()
